@@ -1,0 +1,89 @@
+version: '3.8'
+
+ 
+
+services:
+
+  microservice1:
+
+    image: ms1:v1.0
+
+    deploy:
+
+      replicas: 3
+
+    build: 
+
+      context: ./microservice1
+
+      dockerfile: Dockerfile
+
+    ports:
+
+      - "3000:3000"
+
+    depends_on:
+
+      - microservice2
+
+  microservice2:
+
+    image: ms2:v1.0
+
+    deploy:
+
+      replicas: 2
+
+    build: 
+
+      context: ./microservice2
+
+      dockerfile: Dockerfile
+
+    ports:
+
+      - "3001:3001"
+
+    depends_on:
+
+      - microservice3
+
+  microservice3:
+
+    image: ms3:v1.0
+
+    deploy:
+
+      replicas: 2
+
+    build: 
+
+      context: ./microservice3
+
+      dockerfile: Dockerfile
+
+    ports:
+
+      - "3002:3002"
+
+    depends_on:
+
+      - microservice4
+
+  microservice4:
+
+    image: ms4:v1.0
+
+    deploy:
+
+      replicas: 2
+
+    build: 
+
+      context: ./microservice4
+
+      dockerfile: Dockerfile
+
+    ports:
+
+      - "3003:3003"
